@@ -1,0 +1,31 @@
+:root {
+  /* Color */
+  --bg: #14170F;
+  --bg-panel: #1B2016;
+  --bg-panel-raised: #212819;
+  --line: #2C3324;
+  --moss: #7C9473;
+  --moss-bright: #A8C398;
+  --moss-dim: #4E5F45;
+  --cream: #EDE8DA;
+  --cream-dim: #B9B7A9;
+  --muted: #8B9186;
+  --amber-flag: #D9A867;
+
+  /* Type */
+  --font-display: "Space Grotesk", "Segoe UI", sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", "Courier New", monospace;
+
+  --fs-2xl: clamp(2.6rem, 5vw + 1rem, 5rem);
+  --fs-xl: clamp(1.8rem, 2.4vw + 1rem, 2.6rem);
+  --fs-lg: clamp(1.3rem, 1.2vw + 1rem, 1.6rem);
+  --fs-md: 1.05rem;
+  --fs-sm: 0.92rem;
+  --fs-xs: 0.78rem;
+
+  /* Layout */
+  --maxw: 1180px;
+  --gap: clamp(1.5rem, 4vw, 3rem);
+  --radius: 3px;
+}
