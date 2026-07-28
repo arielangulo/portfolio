@@ -1,53 +1,24 @@
-# Portafolio
+# Ariel Angulo — Portfolio
 
-Sitio estático hecho con React + Vite, Bootstrap (grid/utilities) y `@tsparticles` para el fondo de red animado del hero.
+Personal portfolio site for Ariel Angulo, a Systems Engineering student in Costa Rica focused on cloud infrastructure and networking.
 
-## Cómo editar tu contenido
+**Live site:** 
 
-Casi todo el texto vive en un solo archivo:
+## About
 
-```
-src/data/content.js
-```
+I'm finishing my degree in Computer Science, currently interning at NIC Costa Rica, and working toward the AWS Solutions Architect – Associate certification (SAA-C03). My background is in networking and infrastructure automation, and I'm moving towards cloud engineering.
 
-Ahí cambiás tu nombre, rol, bio, experiencia, proyectos, skills y certificaciones. Los componentes en `src/components/` solo leen de ese archivo, así que normalmente no necesitás tocar el JSX.
+This site covers my profile, experience, projects — including the CRIX.CR institutional site and a CDN traffic analysis pilot built with Akvorado — technical skills, and certifications in progress.
 
-## Correrlo en local
+## Built with
 
-```bash
-npm install
-npm run dev
-```
+- **React + Vite** — static site, no backend
+- **@tsparticles** — the connected-node network animation in the hero
+- **Bootstrap** utilities for layout
+- Custom design system 
+- Bilingual (Spanish / English) with a language toggle in the nav
 
-## Generar el build de producción
+## Contact
 
-```bash
-npm run build
-```
-
-Esto genera la carpeta `dist/` — son solo archivos estáticos (HTML/CSS/JS), sin backend.
-
-## Desplegarlo (gratis)
-
-Cualquiera de estas opciones sirve, arrastrando o conectando el repo:
-- **Vercel**: importás el repo de GitHub, detecta Vite automáticamente.
-- **Netlify**: `npm run build`, build command `npm run build`, publish directory `dist`.
-- **GitHub Pages**: subís el contenido de `dist/` a la rama `gh-pages` (o usá `gh-pages` npm package).
-
-## Estructura
-
-```
-src/
-  data/content.js       <- tu información (editar aquí)
-  components/            <- Nav, Hero, About, Experience, Projects, Skills, Contact, Footer
-  components/NetworkField.jsx  <- config de partículas del hero
-  styles/tokens.css      <- paleta de colores y tipografía
-  styles/global.css      <- estilos base
-  styles/layout.css      <- estilos de cada sección
-```
-
-## Antes de publicarlo, revisá:
-
-- `profile.email`, `linkedin`, `github` y `cvUrl` en `content.js` (están con placeholders).
-- El texto de tu rol ("Bachiller en Ingeniería en Sistemas...") — ajustalo si tu universidad te confiere el título en otro momento.
-- El link de CRIX.CR cuando se publique.
+- Email: arielangulomendez@gmail.com
+- LinkedIn: https://www.linkedin.com/in/ariel-angulo-méndez-b407013a2/
