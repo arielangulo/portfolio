@@ -2,7 +2,7 @@
 
 Personal portfolio site for myself, a Computer Science student in Costa Rica focused on cloud infrastructure and networking.
 
-**Live site:** 
+**Live site:** https://personal-portfolio-omega-ten-78.vercel.app
 
 ## About
 
