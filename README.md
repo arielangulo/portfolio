@@ -1,6 +1,6 @@
 # Ariel Angulo — Portfolio
 
-Personal portfolio site for Ariel Angulo, a Systems Engineering student in Costa Rica focused on cloud infrastructure and networking.
+Personal portfolio site for myself, a Computer Science student in Costa Rica focused on cloud infrastructure and networking.
 
 **Live site:** 
 
