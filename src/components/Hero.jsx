@@ -11,15 +11,17 @@ export default function Hero() {
       <NetworkField />
       <div className="hero__scanline" aria-hidden="true" />
       <div className="container hero__inner">
-        {meta.photo && (
-          <div className="hero__photo">
-            <img src={meta.photo} alt={meta.name} />
-          </div>
-        )}
         <p className="eyebrow">
           {meta.location} · {ui.hero.eyebrowSuffix}
         </p>
-        <h1 className="hero__title">{meta.name}</h1>
+        <div className="hero__identity">
+          {meta.photo && (
+            <div className="hero__photo">
+              <img src={meta.photo} alt={meta.name} />
+            </div>
+          )}
+          <h1 className="hero__title">{meta.name}</h1>
+        </div>
         <p className="hero__role">{profile.role}</p>
         <p className="hero__tagline">{profile.tagline}</p>
         <div className="hero__actions">

@@ -8,9 +8,9 @@
 export const meta = {
   name: "Ariel Angulo",
   location: "Costa Rica",
-  email: "tucorreo@ejemplo.com",
-  linkedin: "https://linkedin.com/in/tu-usuario",
-  github: "https://github.com/tu-usuario",
+  email: "arielangulomendez@gmail.com",
+  linkedin: "https://www.linkedin.com/in/ariel-angulo-méndez-b407013a2/",
+  github: "https://github.com/arielangulo",
   cvUrl: "#", // reemplazá por el link a tu CV en PDF
   photo: "/profile.jpg",
 };
@@ -43,75 +43,73 @@ export const content = {
         contactMe: "Contactarme",
       },
       sections: {
-        profile: "01 · Perfil",
-        experience: "02 · Experiencia",
-        projects: "03 · Proyectos",
-        skills: "04 · Skills",
-        contact: "05 · Contacto",
+        profile: "Perfil",
+        experience: "Experiencia",
+        projects: "Proyectos",
+        skills: "Skills",
+        contact: "Contacto",
         certifications: "Certificaciones",
       },
       projectLink: "Ver proyecto →",
       contact: {
         title: "¿Trabajamos juntos?",
-        text: "Estoy buscando oportunidades en infraestructura cloud y networking. Si tenés un proyecto o una posición abierta, escribime.",
+        text: "Estoy buscando oportunidades en infraestructura cloud o desarrollo de software. Si tenés un proyecto o una posición abierta, escribime.",
       },
       footer: {
-        built: "hecho con react + vite",
       },
     },
     profile: {
-      role: "Estudiante de Ingeniería en Sistemas · Aspirante a Cloud Engineer",
+      role: "Estudiante de Ingeniería Informática · Aspirante a Cloud Engineer",
       tagline:
         "Construyo y automatizo infraestructura — de redes a la nube — con foco en AWS.",
     },
     about: {
       lede: "De redes a la nube: me interesa la infraestructura que sostiene todo lo demás.",
       paragraphs: [
-        "Estoy terminando la carrera de Ingeniería en Sistemas (el título se otorga al concluir la Licenciatura) con experiencia práctica en redes, automatización e infraestructura cloud. Me interesa el trabajo donde la infraestructura deja de ser manual: scripts, monitoreo y arquitecturas que se sostienen solas.",
+        "Estoy terminando la carrera de Ingeniería Informática (el título se otorga al concluir la Licenciatura) con experiencia práctica en redes, automatización e infraestructura cloud. Me interesa el trabajo donde la infraestructura deja de ser manual: scripts, monitoreo y arquitecturas que se sostienen solas.",
         "Actualmente enfocado en certificarme como AWS Solutions Architect – Associate (SAA-C03), como parte de mi camino hacia Cloud Engineering.",
       ],
     },
-    experience: [
+    experience: [ 
       {
         role: "Pasante",
         org: "NIC Costa Rica",
-        period: "— · 2 meses restantes",
+        period: "2026 - 8 meses (enero-agosto)",
         description:
           "Pasantía técnica con exposición a redes, infraestructura y proyectos de análisis de datos de tráfico, incluyendo desarrollo del sitio institucional de CRIX.CR.",
-        tags: ["Redes", "Infraestructura", "Automatización"],
+        tags: ["Redes", "Infraestructura", "Automatización",],
       },
     ],
     projects: [
       {
-        title: "CRIX.CR — Sitio institucional",
+        title: "CRIX.CR — Portal institucional",
         description:
-          "Diseño y desarrollo del sitio web oficial de CRIX.CR (próximo a publicarse), el punto de intercambio de tráfico de Costa Rica. Construido en Next.js con PostgreSQL como base de datos.",
-        tags: ["Next.js", "PostgreSQL", "CI/CD"],
-        highlight:
-          "El servidor de despliegue está protegido por FortiClient, así que los runners de GitHub Actions alojados en la nube no tenían acceso directo. Configuré un runner self-hosted dentro de la red para que cada push a main dispare el build y despliegue automáticamente en el servidor.",
-        link: null,
-        status: "Próximo a publicarse",
-        image: null,
+          "Diseño y desarrollo del sitio web oficial de CRIX.CR, el punto de intercambio de tráfico de Costa Rica. Construido en Next.js con PostgreSQL como base de datos.",
+        tags: ["Next.js", "PostgreSQL", "CI/CD", "Microsoft Entra ID"],
+        highlight: null,
+        status: "En producción",
+        image: "projects/5.png",
       },
+      
       {
         title: "Análisis de tráfico CDN — NIC Costa Rica",
         description:
-          "Diseño de un pipeline para medir el consumo de tráfico de CDNs entre los miembros de NIC Costa Rica: configuración de Akvorado como motor de recolección y desarrollo de scripts de automatización para el procesamiento de datos. Piloto técnico enfocado en validar la arquitectura de recolección.",
-        tags: ["Akvorado", "Networking", "Automatización", "Scripting"],
+          "Diseño e implementación de un pipeline para analizar el consumo de tráfico CDN utilizando Akvorado y ClickHouse. Automatización del procesamiento de datos mediante scripts y validación técnica de la arquitectura propuesta.",
+        tags: ["Akvorado", "ClickHouse", "Docker", "Linux", "sFlow", ],
         highlight: null,
         link: null,
         status: "Piloto técnico",
-        image: null,
+        image: "/projects/akvorado.jpeg",
+        imageFit: "cover",
       },
-      {
-        title: "Proyectos web adicionales",
-        description:
-          "Varios sitios web estáticos desarrollados de forma independiente — enfocados en diseño limpio y buenas prácticas de frontend.",
-        tags: ["React", "Frontend"],
+        {
+        title: "Adiestramiento Montesuma - Sitio web",
+        description: "Diseño y desarrollo del sitio web corporativo de Adiestramiento Montesuma con React y Vite. Incluye integración con Google Maps, WhatsApp y despliegue en Vercel con dominio personalizado.",
+        tags: ["React","Vite","JavaScript"],
         highlight: null,
-        link: null,
-        status: null,
-        image: null,
+        link: "https://adiestramientomontesuma.com", // o null si no hay link público
+        status: "Publicado", // o null si no aplica
+        image: "/projects/Montesuma Logo.png", // poné el archivo en /public/proyectos, o null
       },
     ],
     skills: {
@@ -119,17 +117,17 @@ export const content = {
         {
           key: "cloud",
           label: "Cloud",
-          items: ["AWS (en certificación)", "IAM", "EC2 / S3 básico", "Arquitectura cloud"],
+          items: ["AWS (SA-C03 en proceso de certificación)", "IAM", "EC2 / S3 básico", "Arquitectura cloud", "RDS", "VPC", "S3", "CloudFront", "Route 53", "Lambda"],
         },
         {
           key: "networking",
           label: "Networking",
-          items: ["Redes TCP/IP", "Monitoreo de tráfico", "Akvorado", "CDNs"],
+          items: ["Redes TCP/IP", "VPC", "Subneteo", "Configuración de routers y switches", "Monitoreo de tráfico",],
         },
         {
           key: "dev",
           label: "Desarrollo",
-          items: ["JavaScript", "React", "Python", "Scripting / Automatización", "Git"],
+          items: ["JavaScript", "React", "Python", "Scripting / Automatización", "Git", "Node.js", "TailwindCSS", "Next.js", "SQL / NoSQL",],
         },
       ],
     },
@@ -157,11 +155,11 @@ export const content = {
         contactMe: "Get in touch",
       },
       sections: {
-        profile: "01 · Profile",
-        experience: "02 · Experience",
-        projects: "03 · Projects",
-        skills: "04 · Skills",
-        contact: "05 · Contact",
+        profile: "Profile",
+        experience: "Experience",
+        projects: "Projects",
+        skills: "Skills",
+        contact: "Contact",
         certifications: "Certifications",
       },
       projectLink: "View project →",
@@ -170,18 +168,17 @@ export const content = {
         text: "I'm looking for opportunities in cloud infrastructure and networking. If you have a project or an open role, reach out.",
       },
       footer: {
-        built: "built with react + vite",
       },
     },
     profile: {
-      role: "Systems Engineering Student · Aspiring Cloud Engineer",
+      role: "Computer Science Engineering Student · Aspiring Cloud Engineer",
       tagline:
         "I build and automate infrastructure — from networking to the cloud — with a focus on AWS.",
     },
     about: {
       lede: "From networking to the cloud: I care about the infrastructure that holds everything else up.",
       paragraphs: [
-        "I'm finishing my degree in Systems Engineering (the title is granted upon completing the graduate-level Licenciatura) with hands-on experience in networking, automation, and cloud infrastructure. I'm drawn to work where infrastructure stops being manual: scripts, monitoring, and architectures that hold themselves up.",
+        "I'm finishing my degree in Computer Science Engineering (the title is granted upon completing the graduate-level Licenciatura) with hands-on experience in networking, automation, and cloud infrastructure. I'm drawn to work where infrastructure stops being manual: scripts, monitoring, and architectures that hold themselves up.",
         "Currently focused on earning the AWS Solutions Architect – Associate certification (SAA-C03), as part of my path toward Cloud Engineering.",
       ],
     },
@@ -189,7 +186,7 @@ export const content = {
       {
         role: "Intern",
         org: "NIC Costa Rica",
-        period: "— · 2 months left",
+        period: "2026 - 8 months (January-August)",
         description:
           "Technical internship with hands-on exposure to networking, infrastructure, and traffic data analysis projects, including development of the CRIX.CR institutional site.",
         tags: ["Networking", "Infrastructure", "Automation"],
@@ -204,8 +201,8 @@ export const content = {
         highlight:
           "The deployment server sits behind FortiClient, so cloud-hosted GitHub Actions runners had no direct access. I set up a self-hosted runner inside the network so every push to main triggers an automatic build and deploy on the server.",
         link: null,
-        status: "Launching soon",
-        image: null,
+        status: "In production",
+        image: "/projects/5.png",
       },
       {
         title: "CDN traffic analysis — NIC Costa Rica",
@@ -215,17 +212,18 @@ export const content = {
         highlight: null,
         link: null,
         status: "Technical pilot",
-        image: null,
+        image: "/projects/akvorado.jpeg",
+        imageFit: "cover",
+
       },
-      {
-        title: "Additional web projects",
-        description:
-          "Several independently built static websites — focused on clean design and solid frontend practices.",
-        tags: ["React", "Frontend"],
+        {
+        title: "Adiestramiento Montesuma - Sitio web",
+        description: "Designed and developed the complete website for Adiestramiento Montesuma, a Costa Rican dog training company with over 30 years of experience. Built a responsive React application with React Router, dedicated service pages, Google Maps integration, and deployed it on Vercel with a custom domain.",
+        tags: ["React Vite","JavaScript","Git", "Vercel", "Landing Page", "WhatsApp / Facebook Integration", "CSS Responsive", "Node.js"],
         highlight: null,
-        link: null,
-        status: null,
-        image: null,
+        link: "https://adiestramientomontesuma.com", // o null si no hay link público
+        status: "Published", // o null si no aplica
+        image: "/projects/Montesuma Logo.png", // poné el archivo en /public/proyectos, o null
       },
     ],
     skills: {
@@ -233,7 +231,7 @@ export const content = {
         {
           key: "cloud",
           label: "Cloud",
-          items: ["AWS (in progress)", "IAM", "EC2 / S3 basics", "Cloud architecture"],
+          items: ["AWS (in progress)", "IAM", "EC2 / S3 basics", "Cloud architecture", "RDS", "VPC", "S3", "CloudFront", "Route 53", "Lambda"],
         },
         {
           key: "networking",

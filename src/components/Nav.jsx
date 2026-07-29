@@ -24,10 +24,6 @@ export default function Nav() {
   return (
     <header className={`nav ${scrolled ? "nav--scrolled" : ""}`}>
       <div className="container nav__inner">
-        <a href="#top" className="nav__mark">
-          <span className="nav__dot" aria-hidden="true" />
-          {meta.name.split(" ")[0]}
-        </a>
         <nav className="nav__links" aria-label="Navegación principal">
           {links.map((l) => (
             <a key={l.href} href={l.href}>
