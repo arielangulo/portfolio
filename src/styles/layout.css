@@ -265,32 +265,10 @@
   height: 100%;
   object-fit: cover;
 }
-.project-card__highlight {
-  position: relative;
-  padding-left: 0.9rem;
-  padding-top: 0.6rem;
-  margin-top: 0.2rem;
-  border-top: 1px solid var(--line);
-  font-size: var(--fs-sm);
-  color: var(--cream-dim);
-}
-.project-card__highlight-mark {
-  position: absolute;
-  left: 0;
-  top: 0.35rem;
-  bottom: 0.15rem;
-  width: 2px;
-  background: var(--moss);
-}
 .tag--status {
   color: var(--amber-flag);
   border-color: var(--amber-flag);
   flex-shrink: 0;
-}
-.project-card__link {
-  font-family: var(--font-mono);
-  font-size: var(--fs-sm);
-  margin-top: auto;
 }
 
 /* ---------- SKILLS ---------- */
