@@ -55,7 +55,7 @@ const projectsEs = [
     imageFit: "contain",
     featured: false,
     tech: ["Next.js", "PostgreSQL", "CI/CD", "Microsoft Entra ID"],
-    links: { site: "https://crix.cr", github: null }, // agregá la URL cuando esté público
+    links: { site: "https://crix.cr", github: null, docs: null }, // agregá la URL cuando esté público
     caseStudy: {
       objective:
         "NIC Costa Rica necesitaba un sitio institucional para CRIX.CR, el punto de intercambio de tráfico del país, que comunicara claramente qué es un IXP, quiénes participan y cómo unirse.",
@@ -90,7 +90,7 @@ const projectsEs = [
     imageFit: "cover",
     featured: false,
     tech: ["Akvorado", "ClickHouse", "Python", "Docker", "Linux", "sFlow"],
-    links: { site: null, github: null },
+    links: { site: null, github: null, docs: "/docs/akvorado-guia-instalacion.pdf" }, // agregá la URL cuando esté público
     caseStudy: {
       objective:
         "NIC Costa Rica necesitaba una forma de medir el consumo de tráfico de CDNs específicos entre sus ISPs miembros (Tigo, Telecable, Cabletica, entre otros), como base para reportes periódicos de consumo.",
@@ -270,7 +270,8 @@ export const content = {
         caseStudy: "Caso de estudio",
         site: "Sitio web",
         github: "GitHub",
-        back: "← Volver a proyectos",
+        docs: "Ver documentación",
+        back: "Volver a proyectos",
         objective: "Objetivo del proyecto",
         architecture: "Arquitectura",
         techStack: "Tecnologías",
@@ -398,7 +399,8 @@ export const content = {
         caseStudy: "Case study",
         site: "Website",
         github: "GitHub",
-        back: "← Back to projects",
+        docs: "View documentation",
+        back: "Back to projects",
         objective: "Project objective",
         architecture: "Architecture",
         techStack: "Tech stack",

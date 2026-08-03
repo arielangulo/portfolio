@@ -15,22 +15,30 @@ export default function NetworkField() {
       detectRetina: true,
       particles: {
         number: {
-          value: 46,
+          value: 50,
           density: { enable: true, area: 900 },
         },
         color: { value: ["#7C9473", "#EDE8DA", "#4E5F45"] },
-        opacity: { value: { min: 0.35, max: 0.8 } },
-        size: { value: { min: 1, max: 3 } },
+        opacity: { value: { min: 0.12, max: 0.45 } },
+        size: { value: { min: 1, max: 2.6 } },
+        twinkle: {
+          particles: {
+            enable: true,
+            color: "#A8C398",
+            frequency: 0.04,
+            opacity: 0.8,
+          },
+        },
         links: {
           enable: true,
-          distance: 140,
+          distance: 135,
           color: "#4E5F45",
-          opacity: 0.45,
+          opacity: 0.28,
           width: 1,
         },
         move: {
           enable: true,
-          speed: 0.35,
+          speed: 0.7,
           direction: "none",
           random: true,
           straight: false,
@@ -43,7 +51,7 @@ export default function NetworkField() {
           resize: { enable: true },
         },
         modes: {
-          grab: { distance: 160, links: { opacity: 0.7 } },
+          grab: { distance: 150, links: { opacity: 0.55 } },
         },
       },
     }),

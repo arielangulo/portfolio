@@ -4,14 +4,22 @@
   padding-bottom: clamp(4rem, 8vh, 6rem);
 }
 .case-study__back {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
   font-family: var(--font-mono);
   font-size: var(--fs-sm);
   color: var(--muted);
   margin-bottom: 2rem;
 }
+.case-study__back-icon {
+  transition: transform 0.2s ease;
+}
 .case-study__back:hover {
   color: var(--moss-bright);
+}
+.case-study__back:hover .case-study__back-icon {
+  transform: translateX(-3px);
 }
 .case-study__hero {
   padding-bottom: clamp(2.5rem, 6vh, 4rem);
@@ -65,7 +73,6 @@
   display: block;
   border-radius: 4px;
 }
-
 .case-study__not-found {
   padding: 6rem 0;
   text-align: center;
