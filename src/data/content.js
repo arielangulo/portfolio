@@ -4,63 +4,66 @@
 // `content.es` / `content.en` = todo el texto visible, con la MISMA forma
 // en los dos idiomas.
 //
-// Cada proyecto tiene:
-//  - datos de card (resumen rápido, visible en /  )
-//  - datos de case study (página completa en /projects/:slug)
-//
 // MOLDE de un proyecto nuevo — copiá esto (en `es` Y en `en`, mismo slug):
 // {
 //   slug: "nombre-del-proyecto",       // define la URL: /projects/nombre-del-proyecto
+//                                       // usá minúsculas, sin espacios ni tildes/ñ, separado por guiones
 //   title: "...",
 //   status: "..." | null,
-//   summary: "Resumen de 2-4 líneas para la card.",
-//   image: "/proyectos/archivo.jpg" | null,
-//   imageFit: "contain" | "cover",     // default "contain" (logos), "cover" para screenshots
+//   summary: "Resumen de 2-4 líneas para la card (vista rápida).",
+//   image: "/projects/archivo.png" | null,
+//   imageFit: "contain" | "cover",     // default "contain" (logos), "cover" para screenshots anchos
 //   featured: true | false,            // ocupa 2 columnas en la grilla (opcional)
-//   tech: ["React", "Node.js"],        // se buscan íconos en techIcons.js por nombre
-//   links: { site: "https://..." | null, github: "https://..." | null },
+//   tech: ["React", "Node.js"],        // se buscan íconos en techIcons.js por nombre exacto
+//   links: {
+//     site: "https://tu-sitio.com" | null,   // si existe, aparece el botón "Sitio web"
+//     github: "https://github.com/..." | null, // si existe, aparece el botón "GitHub"
+//   },
 //   caseStudy: {
-//     objective: "¿Qué problema resolvía?",
-//     architecture: "Descripción de la arquitectura (agregá diagramas después vía ProjectGallery).",
+//     objective: "¿Qué problema resolvía el proyecto?",
+//     architecture: "Cómo está construido (stack, infraestructura).",
+//     architectureDiagram: "/projects/diagrama.png" | null, // captura/diagrama de arquitectura
 //     contribution: "Qué desarrollaste específicamente vos.",
 //     challenges: [
 //       { problem: "...", solution: "..." },
 //     ],
-//     results: "Qué logró el proyecto.",
+//     results: "Qué logró el proyecto / en qué estado quedó.",
 //     lessons: "Qué aprendiste.",
-//     gallery: ["/proyectos/captura1.jpg"], // opcional
+//     gallery: ["/projects/captura1.png"], // opcional, capturas adicionales
+//     heroImage: "/projects/captura-principal.png" | null, // foto del proyecto, debajo del título
 //   },
 // }
 
 export const meta = {
   name: "Ariel Angulo",
   location: "Costa Rica",
-  email: "tucorreo@ejemplo.com",
-  linkedin: "https://linkedin.com/in/tu-usuario",
-  github: "https://github.com/tu-usuario",
-  cvUrl: "#",
+  email: "arielangulomendez@gmail.com",
+  linkedin: "https://www.linkedin.com/in/ariel-angulo-méndez-b407013a2/",
+  github: "https://github.com/arielangulo",
+  cvUrl: "#", // reemplazá por el link a tu CV en PDF
   photo: "/profile.jpg",
 };
 
 const projectsEs = [
   {
     slug: "crix-portal",
-    title: "CRIX.CR — Sitio institucional",
-    status: "Próximo a publicarse",
+    title: "CRIX.CR — Portal institucional",
+    status: "En producción",
     summary:
-      "Sitio oficial de CRIX.CR, el punto de intercambio de tráfico de Costa Rica. Next.js + PostgreSQL, con despliegue automatizado mediante un runner self-hosted.",
-    image: null,
+      "Sitio web oficial de CRIX.CR, el punto de intercambio de tráfico de Costa Rica. Construido en Next.js con PostgreSQL, con CI/CD automatizado de punta a punta.",
+    image: "/projects/5.png",
     imageFit: "contain",
     featured: false,
-    tech: ["Next.js", "PostgreSQL", "CI/CD"],
-    links: { site: null, github: null },
+    tech: ["Next.js", "PostgreSQL", "CI/CD", "Microsoft Entra ID"],
+    links: { site: "https://crix.cr", github: null }, // agregá la URL cuando esté público
     caseStudy: {
       objective:
-        "NIC Costa Rica necesitaba un sitio institucional para CRIX.CR, el punto de intercambio de tráfico del país, que comunicara claramente qué es un IXP, quiénes participan y cómo unirse — un sitio orientado tanto a ISPs técnicos como a las organizaciones que evalúan sumarse.",
+        "NIC Costa Rica necesitaba un sitio institucional para CRIX.CR, el punto de intercambio de tráfico del país, que comunicara claramente qué es un IXP, quiénes participan y cómo unirse.",
       architecture:
-        "Aplicación Next.js con renderizado en servidor, base de datos PostgreSQL para el contenido dinámico (miembros, estadísticas de tráfico), y despliegue automatizado dentro de la red interna de NIC Costa Rica, detrás de un firewall FortiClient.",
+        "Aplicación Next.js con PostgreSQL para el contenido dinámico, autenticación vía Microsoft Entra ID, y despliegue automatizado dentro de la red interna de NIC Costa Rica.",
+      architectureDiagram: null,
       contribution:
-        "Diseño y desarrollo completo del sitio: estructura de páginas, componentes de UI, modelo de datos en PostgreSQL, y el pipeline de CI/CD para el despliegue.",
+        "Diseño y desarrollo completo del sitio: estructura de páginas, componentes de UI, modelo de datos en PostgreSQL, integración de autenticación y el pipeline de CI/CD para el despliegue.",
       challenges: [
         {
           problem:
@@ -70,10 +73,11 @@ const projectsEs = [
         },
       ],
       results:
-        "Pipeline de despliegue continuo funcionando de punta a punta: cada cambio en main llega a producción sin intervención manual. El sitio está en fase final antes de su publicación oficial.",
+        "Sitio en producción, con despliegue continuo funcionando de punta a punta: cada cambio en main llega a producción sin intervención manual.",
       lessons:
         "Configurar CI/CD en un entorno con restricciones de red reales (no solo en la nube) me enseñó a pensar la automatización considerando el contexto de infraestructura, no solo el código de la aplicación.",
       gallery: [],
+      heroImage: null,
     },
   },
   {
@@ -81,32 +85,34 @@ const projectsEs = [
     title: "Análisis de tráfico CDN — NIC Costa Rica",
     status: "Piloto técnico",
     summary:
-      "Pipeline para medir el consumo de tráfico de CDNs entre los miembros de NIC Costa Rica, usando Akvorado como motor de recolección.",
-    image: null,
+      "Pipeline propio, diseñado e implementado en solitario, para analizar el consumo de tráfico de CDNs entre los miembros de NIC Costa Rica, usando Akvorado, ClickHouse y Python.",
+    image: "/projects/akvorado.jpeg",
     imageFit: "cover",
     featured: false,
-    tech: ["Akvorado", "Networking", "Scripting"],
+    tech: ["Akvorado", "ClickHouse", "Python", "Docker", "Linux", "sFlow"],
     links: { site: null, github: null },
     caseStudy: {
       objective:
-        "NIC Costa Rica quería entender cuánto tráfico de CDNs específicos (Google, Cloudflare, Akamai, etc.) circula entre sus miembros, como insumo para decisiones de peering.",
+        "NIC Costa Rica necesitaba una forma de medir el consumo de tráfico de CDNs específicos entre sus ISPs miembros (Tigo, Telecable, Cabletica, entre otros), como base para reportes periódicos de consumo.",
       architecture:
-        "Akvorado como motor de recolección de flujos de red (NetFlow/sFlow), con scripts propios para clasificar el tráfico por CDN de origen y procesarlo en reportes agregados.",
+        "Akvorado como motor de recolección de flujos sFlow, ClickHouse como base de datos para almacenar y consultar los datos de tráfico, y scripts en Python para extraer los datos y generar los reportes. Todo desplegado en contenedores Docker sobre Linux.",
+      architectureDiagram: null,
       contribution:
-        "Configuración completa de Akvorado, y desarrollo de los scripts de automatización para la recolección y el procesamiento de los datos de tráfico.",
+        "Diseño e implementación completa del pipeline de principio a fin, de forma individual: configuración de Akvorado, modelado de datos en ClickHouse, containerización con Docker, y scripts en Python para el procesamiento y la generación automática de reportes.",
       challenges: [
         {
           problem:
-            "Clasificar tráfico por CDN de origen a partir de flujos de red crudos no es trivial: requiere mapear rangos de IP y ASN a proveedores conocidos.",
+            "Llevar el pipeline a una operación continua con datos reales de facturación requería además ajustes en la topología de red interna que quedaban fuera del alcance que el equipo quiso abordar en ese momento.",
           solution:
-            "Construí una capa de clasificación sobre los datos de Akvorado que cruza la información de flujo con bases de datos de ASN públicas.",
+            "El pipeline de software (recolección, almacenamiento y generación de reportes) quedó completo, funcional y validado por mi cuenta. La decisión de priorizar otros proyectos (como el desarrollo de crix.cr) dejó la puesta en producción continua pendiente para una siguiente fase.",
         },
       ],
       results:
-        "El pipeline de recolección quedó validado como piloto técnico: la arquitectura funciona y los datos se recolectan correctamente. El proyecto no llegó a una fase de producción continua dentro del alcance de la pasantía.",
+        "Pipeline técnico completo y validado: Akvorado recolectando flujos correctamente, datos consultables en ClickHouse y reportes generándose vía scripts en Python. No llegó a operar en producción continua con datos reales de facturación por una decisión de priorización del equipo, no por una limitación técnica del pipeline.",
       lessons:
-        "Trabajar con datos de red a esta escala me dio una base sólida en herramientas de observabilidad de tráfico y en cómo estructurar pipelines de datos de networking.",
+        "Trabajar solo en un pipeline de datos de red de principio a fin —desde la recolección hasta el reporte— me dio una base sólida en observabilidad de tráfico y en cómo estructurar sistemas de datos de networking con bases orientadas a analítica.",
       gallery: [],
+      heroImage: null,
     },
   },
   {
@@ -114,46 +120,25 @@ const projectsEs = [
     title: "Adiestramiento Montesuma — Sitio web",
     status: "Publicado",
     summary:
-      "Sitio web para un negocio de adiestramiento canino en Costa Rica. Diseño limpio, enfocado en presentar servicios y facilitar el contacto.",
-    image: null,
+      "Sitio web corporativo para un negocio de adiestramiento canino en Costa Rica, con más de 30 años de experiencia. React + Vite, con integración de Google Maps y WhatsApp.",
+    image: "/projects/Montesuma Logo.png",
     imageFit: "contain",
     featured: false,
-    tech: ["React", "Vite", "TailwindCSS"],
-    links: { site: null, github: null },
+    tech: ["React", "Vite", "JavaScript"],
+    links: { site: "https://adiestramientomontesuma.com", github: "https://github.com/arielangulo/Adiestramiento_Montesuma" },
     caseStudy: {
       objective:
-        "Un negocio local de adiestramiento canino necesitaba presencia web para mostrar sus servicios y facilitar que clientes potenciales los contactaran.",
+        "Adiestramiento Montesuma, un negocio con más de 30 años de trayectoria, necesitaba presencia web para mostrar sus servicios y facilitar el contacto con clientes potenciales.",
       architecture:
-        "Sitio estático construido con React + Vite, estilizado con TailwindCSS, sin backend — formulario de contacto vía enlace directo.",
-      contribution:
-        "Diseño y desarrollo completo del sitio, de principio a fin.",
+        "Sitio construido con React + Vite, con páginas dedicadas por servicio, integración de Google Maps y WhatsApp, y despliegue en Vercel con dominio personalizado.",
+      architectureDiagram: null,
+      contribution: "Diseño y desarrollo completo del sitio, de principio a fin, incluyendo el despliegue.",
       challenges: [],
-      results:
-        "Sitio publicado y en uso activo por el negocio.",
+      results: "Sitio publicado y en uso activo por el negocio, en producción bajo dominio propio.",
       lessons:
-        "Proyecto pequeño y de alcance acotado — buena práctica en llevar un sitio completo de diseño a publicación por mi cuenta.",
+        "Buena práctica llevando un proyecto completo — diseño, desarrollo, integración con servicios externos y despliegue — de principio a fin por mi cuenta.",
       gallery: [],
-    },
-  },
-  {
-    slug: "web-projects",
-    title: "Proyectos web adicionales",
-    status: null,
-    summary:
-      "Varios sitios web estáticos desarrollados de forma independiente, enfocados en diseño limpio y buenas prácticas de frontend.",
-    image: null,
-    imageFit: "contain",
-    featured: false,
-    tech: ["React", "Frontend"],
-    links: { site: null, github: null },
-    caseStudy: {
-      objective: "Proyectos personales para practicar frontend fuera de un contexto laboral específico.",
-      architecture: "Sitios estáticos, sin backend.",
-      contribution: "Diseño y desarrollo independiente.",
-      challenges: [],
-      results: "Varios sitios completados y publicados.",
-      lessons: "Base práctica en frontend antes de sumar cloud y networking al perfil.",
-      gallery: [],
+      heroImage: null,
     },
   },
 ];
@@ -161,22 +146,23 @@ const projectsEs = [
 const projectsEn = [
   {
     slug: "crix-portal",
-    title: "CRIX.CR — Institutional site",
-    status: "Launching soon",
+    title: "CRIX.CR — Institutional portal",
+    status: "In production",
     summary:
-      "Official site for CRIX.CR, Costa Rica's traffic exchange point. Built with Next.js + PostgreSQL, with automated deployment through a self-hosted runner.",
-    image: null,
+      "Official website for CRIX.CR, Costa Rica's traffic exchange point. Built with Next.js and PostgreSQL, with fully automated CI/CD.",
+    image: "/projects/5.png",
     imageFit: "contain",
     featured: false,
-    tech: ["Next.js", "PostgreSQL", "CI/CD"],
-    links: { site: null, github: null },
+    tech: ["Next.js", "PostgreSQL", "CI/CD", "Microsoft Entra ID"],
+    links: { site: "https://crix.cr", github: null },
     caseStudy: {
       objective:
-        "NIC Costa Rica needed an institutional site for CRIX.CR, the country's traffic exchange point, that clearly communicates what an IXP is, who participates, and how to join — aimed at both technical ISPs and organizations evaluating membership.",
+        "NIC Costa Rica needed an institutional site for CRIX.CR, the country's traffic exchange point, that clearly communicates what an IXP is, who participates, and how to join.",
       architecture:
-        "Server-rendered Next.js application, PostgreSQL for dynamic content (members, traffic stats), and automated deployment inside NIC Costa Rica's internal network, behind a FortiClient firewall.",
+        "Next.js application with PostgreSQL for dynamic content, authentication via Microsoft Entra ID, and automated deployment inside NIC Costa Rica's internal network.",
+      architectureDiagram: null,
       contribution:
-        "Full design and development of the site: page structure, UI components, the PostgreSQL data model, and the CI/CD deployment pipeline.",
+        "Full design and development of the site: page structure, UI components, the PostgreSQL data model, authentication integration, and the CI/CD deployment pipeline.",
       challenges: [
         {
           problem:
@@ -186,10 +172,11 @@ const projectsEn = [
         },
       ],
       results:
-        "End-to-end continuous deployment pipeline: every change to main reaches production with no manual steps. The site is in its final phase ahead of official launch.",
+        "Site in production, with end-to-end continuous deployment: every change to main reaches production with no manual steps.",
       lessons:
         "Setting up CI/CD in an environment with real network constraints (not just cloud) taught me to think about automation in terms of infrastructure context, not just application code.",
       gallery: [],
+      heroImage: null,
     },
   },
   {
@@ -197,32 +184,34 @@ const projectsEn = [
     title: "CDN traffic analysis — NIC Costa Rica",
     status: "Technical pilot",
     summary:
-      "A pipeline to measure CDN traffic consumption across NIC Costa Rica members, using Akvorado as the collection engine.",
-    image: null,
+      "A pipeline I designed and built solo to analyze CDN traffic consumption across NIC Costa Rica members, using Akvorado, ClickHouse, and Python.",
+    image: "/projects/akvorado.jpeg",
     imageFit: "cover",
     featured: false,
-    tech: ["Akvorado", "Networking", "Scripting"],
+    tech: ["Akvorado", "ClickHouse", "Python", "Docker", "Linux", "sFlow"],
     links: { site: null, github: null },
     caseStudy: {
       objective:
-        "NIC Costa Rica wanted to understand how much traffic from specific CDNs (Google, Cloudflare, Akamai, etc.) flows between its members, as input for peering decisions.",
+        "NIC Costa Rica needed a way to measure CDN traffic consumption across its ISP members (Tigo, Telecable, Cabletica, among others), as the basis for periodic consumption reports.",
       architecture:
-        "Akvorado as the network flow collection engine (NetFlow/sFlow), with custom scripts to classify traffic by originating CDN and process it into aggregated reports.",
+        "Akvorado as the sFlow collection engine, ClickHouse as the database for storing and querying traffic data, and Python scripts for data extraction and report generation. All deployed in Docker containers on Linux.",
+      architectureDiagram: null,
       contribution:
-        "Full setup of Akvorado, and development of the automation scripts for collecting and processing traffic data.",
+        "Full end-to-end design and implementation of the pipeline, done solo: Akvorado setup, ClickHouse data modeling, Docker containerization, and Python scripts for processing and automatically generating reports.",
       challenges: [
         {
           problem:
-            "Classifying traffic by originating CDN from raw network flows isn't trivial: it requires mapping IP ranges and ASNs to known providers.",
+            "Moving the pipeline to continuous operation on real billing data also required changes to the internal network topology that fell outside the scope the team wanted to take on at the time.",
           solution:
-            "I built a classification layer on top of Akvorado's data that cross-references flow information with public ASN databases.",
+            "The software pipeline (collection, storage, and report generation) was fully built, functional, and validated on my own. A prioritization decision (shifting focus to the crix.cr site) left the move to continuous production for a later phase.",
         },
       ],
       results:
-        "The collection pipeline was validated as a technical pilot: the architecture works and data is collected correctly. The project didn't reach a continuous production phase within the internship's scope.",
+        "A complete, validated technical pipeline: Akvorado correctly collecting flows, data queryable in ClickHouse, and reports generated via Python scripts. It didn't reach continuous production on real billing data due to a team prioritization decision, not a technical limitation of the pipeline.",
       lessons:
-        "Working with network data at this scale gave me a solid foundation in traffic observability tooling and in structuring networking data pipelines.",
+        "Building a networking data pipeline solo, end to end — from collection to reporting — gave me a solid foundation in traffic observability and in structuring networking data systems with analytics-oriented databases.",
       gallery: [],
+      heroImage: null,
     },
   },
   {
@@ -230,44 +219,25 @@ const projectsEn = [
     title: "Adiestramiento Montesuma — Website",
     status: "Published",
     summary:
-      "Website for a dog training business in Costa Rica. Clean design, focused on presenting services and making contact easy.",
-    image: null,
+      "Full website for Adiestramiento Montesuma, a Costa Rican dog training company with over 30 years of experience. Built with React + Vite, with Google Maps and WhatsApp integration.",
+    image: "/projects/Montesuma Logo.png",
     imageFit: "contain",
     featured: false,
-    tech: ["React", "Vite", "TailwindCSS"],
-    links: { site: null, github: null },
+    tech: ["React", "Vite", "JavaScript"],
+    links: { site: "https://adiestramientomontesuma.com", github: "https://github.com/arielangulo/Adiestramiento_Montesuma" },
     caseStudy: {
       objective:
-        "A local dog training business needed a web presence to showcase its services and make it easy for potential clients to reach out.",
+        "Adiestramiento Montesuma, a company with over 30 years of experience, needed a web presence to showcase its services and make it easy for potential clients to reach out.",
       architecture:
-        "Static site built with React + Vite, styled with TailwindCSS, no backend — contact handled via a direct link.",
-      contribution: "Full design and development of the site, start to finish.",
+        "Responsive React application built with Vite, with dedicated service pages, Google Maps integration, and deployment on Vercel with a custom domain.",
+      architectureDiagram: null,
+      contribution: "Full design and development of the site, start to finish, including deployment.",
       challenges: [],
-      results: "Site published and actively used by the business.",
+      results: "Site published and actively used by the business, live on its own custom domain.",
       lessons:
-        "Small, well-scoped project — good practice taking a full site from design to launch on my own.",
+        "Good practice taking a complete project — design, development, third-party integrations, and deployment — from start to finish on my own.",
       gallery: [],
-    },
-  },
-  {
-    slug: "web-projects",
-    title: "Additional web projects",
-    status: null,
-    summary:
-      "Several independently built static websites, focused on clean design and solid frontend practices.",
-    image: null,
-    imageFit: "contain",
-    featured: false,
-    tech: ["React", "Frontend"],
-    links: { site: null, github: null },
-    caseStudy: {
-      objective: "Personal projects to practice frontend outside a specific work context.",
-      architecture: "Static sites, no backend.",
-      contribution: "Independent design and development.",
-      challenges: [],
-      results: "Several sites completed and published.",
-      lessons: "Practical frontend foundation before adding cloud and networking to the profile.",
-      gallery: [],
+      heroImage: null,
     },
   },
 ];
@@ -289,11 +259,11 @@ export const content = {
         contactMe: "Contactarme",
       },
       sections: {
-        profile: "01 · Perfil",
-        experience: "02 · Experiencia",
-        projects: "03 · Proyectos",
-        skills: "04 · Skills",
-        contact: "05 · Contacto",
+        profile: "Perfil",
+        experience: "Experiencia",
+        projects: "Proyectos",
+        skills: "Skills",
+        contact: "Contacto",
         certifications: "Certificaciones",
       },
       project: {
@@ -315,22 +285,23 @@ export const content = {
         notFoundText: "No existe ningún proyecto con esa dirección.",
       },
       contact: {
-        title: "¿Trabajamos juntos?",
-        text: "Estoy buscando oportunidades en infraestructura cloud y networking. Si tenés un proyecto o una posición abierta, escribime.",
+        title: "Contacto",
+        text: "Busco activamente oportunidades como Cloud Engineer / Cloud Support Engineer, en infraestructura y automatización de redes en la nube. Si hay una posición abierta o un proyecto donde pueda aportar, contáctenme.",
       },
       footer: {
-        built: "hecho con react + vite",
+        built: "",
       },
     },
     profile: {
-      role: "Estudiante de Ingeniería en Sistemas · Aspirante a Cloud Engineer",
+      role: "Estudiante de Ingeniería Informática · Aspirante a Cloud Engineer",
       tagline:
         "Construyo y automatizo infraestructura — de redes a la nube — con foco en AWS.",
     },
     about: {
       lede: "De redes a la nube: me interesa la infraestructura que sostiene todo lo demás.",
       paragraphs: [
-        "Estoy terminando la carrera de Ingeniería en Sistemas (el título se otorga al concluir la Licenciatura) con experiencia práctica en redes, automatización e infraestructura cloud. Me interesa el trabajo donde la infraestructura deja de ser manual: scripts, monitoreo y arquitecturas que se sostienen solas.",
+        "Estoy terminando la carrera de Ingeniería Informática (el título se otorga al concluir la Licenciatura) con experiencia práctica en redes, automatización e infraestructura cloud, ganada en mi pasantía en NIC Costa Rica / CRIX, el punto de intercambio de tráfico del país.",
+        "Esa experiencia me llevó también a brindar acompañamiento remoto a NIC Brasil y TIGO CR para la instalación y configuración de Akvorado, incluyendo una guía de instalación propia — confirmando que el análisis de tráfico de red es una necesidad compartida por varios ISPs e IXPs, no un caso aislado.",
         "Actualmente enfocado en certificarme como AWS Solutions Architect – Associate (SAA-C03), como parte de mi camino hacia Cloud Engineering.",
       ],
     },
@@ -338,9 +309,9 @@ export const content = {
       {
         role: "Pasante",
         org: "NIC Costa Rica",
-        period: "— · 2 meses restantes",
+        period: "2026 - 8 meses (enero-agosto)",
         description:
-          "Pasantía técnica con exposición a redes, infraestructura y proyectos de análisis de datos de tráfico, incluyendo desarrollo del sitio institucional de CRIX.CR.",
+          "Pasantía técnica en el área de CRIX, con exposición a redes, infraestructura y análisis de datos de tráfico: desarrollo del sitio institucional crix.cr con CI/CD, y diseño en solitario de un pipeline de análisis de tráfico de CDN con Akvorado y ClickHouse.",
         tags: ["Redes", "Infraestructura", "Automatización"],
       },
     ],
@@ -350,17 +321,45 @@ export const content = {
         {
           key: "cloud",
           label: "Cloud",
-          items: ["AWS (en certificación)", "IAM", "EC2 / S3 básico", "Arquitectura cloud"],
+          items: [
+            "AWS (SAA-C03 en proceso de certificación)",
+            "IAM",
+            "EC2 / S3 básico",
+            "Arquitectura cloud",
+            "RDS",
+            "VPC",
+            "S3",
+            "CloudFront",
+            "Route 53",
+            "Lambda",
+          ],
         },
         {
           key: "networking",
           label: "Networking",
-          items: ["Redes TCP/IP", "Monitoreo de tráfico", "Akvorado", "CDNs"],
+          items: [
+            "Redes TCP/IP",
+            "VPC",
+            "Subneteo",
+            "Configuración de routers y switches",
+            "Monitoreo de tráfico (NetFlow / sFlow)",
+            "Akvorado",
+          ],
         },
         {
           key: "dev",
           label: "Desarrollo",
-          items: ["JavaScript", "React", "Python", "Scripting / Automatización", "Git"],
+          items: [
+            "JavaScript",
+            "React",
+            "Python",
+            "Scripting / Automatización",
+            "Git",
+            "Node.js",
+            "TailwindCSS",
+            "Next.js",
+            "SQL / NoSQL",
+          ],
         },
       ],
     },
@@ -388,11 +387,11 @@ export const content = {
         contactMe: "Get in touch",
       },
       sections: {
-        profile: "01 · Profile",
-        experience: "02 · Experience",
-        projects: "03 · Projects",
-        skills: "04 · Skills",
-        contact: "05 · Contact",
+        profile: "Profile",
+        experience: "Experience",
+        projects: "Projects",
+        skills: "Skills",
+        contact: "Contact",
         certifications: "Certifications",
       },
       project: {
@@ -414,22 +413,23 @@ export const content = {
         notFoundText: "There's no project at that address.",
       },
       contact: {
-        title: "Let's work together",
-        text: "I'm looking for opportunities in cloud infrastructure and networking. If you have a project or an open role, reach out.",
+        title: "Contact",
+        text: "I'm actively looking for opportunities as a Cloud Engineer / Cloud Support Engineer, in cloud infrastructure and network automation. If you have an open role or a project where I could contribute, get in touch.",
       },
       footer: {
-        built: "built with react + vite",
+        built: "",
       },
     },
     profile: {
-      role: "Systems Engineering Student · Aspiring Cloud Engineer",
+      role: "Computer Science Engineering Student · Aspiring Cloud Engineer",
       tagline:
         "I build and automate infrastructure — from networking to the cloud — with a focus on AWS.",
     },
     about: {
       lede: "From networking to the cloud: I care about the infrastructure that holds everything else up.",
       paragraphs: [
-        "I'm finishing my degree in Systems Engineering (the title is granted upon completing the graduate-level Licenciatura) with hands-on experience in networking, automation, and cloud infrastructure. I'm drawn to work where infrastructure stops being manual: scripts, monitoring, and architectures that hold themselves up.",
+        "I'm finishing my degree in Computer Science Engineering (the title is granted upon completing the graduate-level Licenciatura), with hands-on experience in networking, automation, and cloud infrastructure gained during my internship at NIC Costa Rica / CRIX, the country's traffic exchange point.",
+        "That experience also led me to provide remote guidance to NIC Brasil and TIGO CR on installing and configuring Akvorado, including an installation guide I wrote myself — confirming that network traffic analysis is a need shared across multiple ISPs and IXPs, not an isolated case.",
         "Currently focused on earning the AWS Solutions Architect – Associate certification (SAA-C03), as part of my path toward Cloud Engineering.",
       ],
     },
@@ -437,9 +437,9 @@ export const content = {
       {
         role: "Intern",
         org: "NIC Costa Rica",
-        period: "— · 2 months left",
+        period: "2026 - 8 months (January-August)",
         description:
-          "Technical internship with hands-on exposure to networking, infrastructure, and traffic data analysis projects, including development of the CRIX.CR institutional site.",
+          "Technical internship in the CRIX area, with hands-on exposure to networking, infrastructure, and traffic data analysis: development of the crix.cr institutional site with CI/CD, and solo design of a CDN traffic analysis pipeline with Akvorado and ClickHouse.",
         tags: ["Networking", "Infrastructure", "Automation"],
       },
     ],
@@ -449,17 +449,45 @@ export const content = {
         {
           key: "cloud",
           label: "Cloud",
-          items: ["AWS (in progress)", "IAM", "EC2 / S3 basics", "Cloud architecture"],
+          items: [
+            "AWS (SAA-C03 in progress)",
+            "IAM",
+            "EC2 / S3 basics",
+            "Cloud architecture",
+            "RDS",
+            "VPC",
+            "S3",
+            "CloudFront",
+            "Route 53",
+            "Lambda",
+          ],
         },
         {
           key: "networking",
           label: "Networking",
-          items: ["TCP/IP networking", "Traffic monitoring", "Akvorado", "CDNs"],
+          items: [
+            "TCP/IP networking",
+            "VPC",
+            "Subnetting",
+            "Router and switch configuration",
+            "Traffic monitoring (NetFlow / sFlow)",
+            "Akvorado",
+          ],
         },
         {
           key: "dev",
           label: "Development",
-          items: ["JavaScript", "React", "Python", "Scripting / Automation", "Git"],
+          items: [
+            "JavaScript",
+            "React",
+            "Python",
+            "Scripting / Automation",
+            "Git",
+            "Node.js",
+            "TailwindCSS",
+            "Next.js",
+            "SQL / NoSQL",
+          ],
         },
       ],
     },

@@ -26,6 +26,11 @@ export default function CaseStudyLayout({ project, labels }) {
             <h1>{title}</h1>
             <ProjectStatus status={status} />
           </div>
+          {caseStudy.heroImage && (
+            <div className="case-study__hero-image">
+              <img src={caseStudy.heroImage} alt={title} loading="lazy" />
+            </div>
+          )}
           <p className="case-study__summary">{summary}</p>
           <ProjectTechStack tech={tech} />
           <ProjectButtons slug={slug} links={links} labels={labels} variant="hero" />
@@ -35,7 +40,11 @@ export default function CaseStudyLayout({ project, labels }) {
           <p>{caseStudy.objective}</p>
         </Section>
 
-        <ArchitectureSection title={labels.architecture} text={caseStudy.architecture} />
+        <ArchitectureSection
+          title={labels.architecture}
+          text={caseStudy.architecture}
+          diagram={caseStudy.architectureDiagram}
+        />
         <TechStackSection title={labels.techStack} tech={tech} />
         <ContributionSection title={labels.contribution} text={caseStudy.contribution} />
         <ChallengeSection
