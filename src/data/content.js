@@ -40,7 +40,7 @@ export const meta = {
   email: "arielangulomendez@gmail.com",
   linkedin: "https://www.linkedin.com/in/ariel-angulo-méndez-b407013a2/",
   github: "https://github.com/arielangulo",
-  cvUrl: "/public/docs/CV_Ariel_Angulo_EN.pdf", 
+  cvUrl: "/docs/CV_Ariel_Angulo_EN.pdf", 
   photo: "/profile.jpg",
 };
 
